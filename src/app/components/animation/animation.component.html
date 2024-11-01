@@ -1,0 +1,23 @@
+<div class="centered-container">
+    <br>
+    <input
+      pInputText 
+      class="full-width" 
+      placeholder="Ingrese el nombre de un Pokemon" 
+      #pokemonName 
+      (input)="updateName(pokemonName.value)">
+    <button pButton icon="pi pi-search" (click)="loadPokemon()" class="p-button-icon-only"></button>
+  
+    <ng-container *ngIf="loading()">
+      <div class="loader-container">
+        <span class="loader"></span>
+      </div>
+    </ng-container>
+  
+    <ng-container *ngIf="animationArray().length === 2 && imagenActual()">
+      <h1>{{pokemonData().species.name}}</h1>
+      <img [src]="imagenActual()" alt="Imagen de animación" height="150" width="150">
+      <h4>Habilidad 1: {{pokemonData().abilities[0].ability.name}}</h4>
+      <h4>Peso: {{pokemonData().weight}}</h4>
+    </ng-container>
+  </div>
